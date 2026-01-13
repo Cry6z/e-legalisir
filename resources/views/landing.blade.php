@@ -204,8 +204,8 @@
                         <div>
                             <flux:heading size="sm">{{ __('Kontak') }}</flux:heading>
                             <ul class="mt-3 space-y-1 text-xs">
-                                <li>Email: <a class="hover:underline" href="mailto:legalisir@umb.ac.id">legalisir@umb.ac.id</a></li>
-                                <li>Telepon: (0736) 123456</li>
+                                <li>Email: <a class="hover:underline" href="mailto:elegalisir@gmail.com">elegalisir@gmail.com</a></li>
+                                <li>Telepon: 081379669540</li>
                                 <li>Alamat: Jl. Bali, Kota Bengkulu</li>
                             </ul>
                         </div>

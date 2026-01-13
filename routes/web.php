@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegistrationOtpController;
 use App\Livewire\Pengajuan\Create as PengajuanCreate;
 use App\Livewire\Pengajuan\Index as PengajuanIndex;
 use App\Livewire\Admin\Pengajuan\Index as AdminPengajuanIndex;
@@ -15,6 +16,14 @@ use Laravel\Fortify\Features;
 Route::get('/', function () {
     return view('landing');
 })->name('home');
+
+Route::middleware('guest')->group(function () {
+    Route::view('register', 'livewire.auth.register')->name('register');
+    Route::post('register/request-otp', [RegistrationOtpController::class, 'requestOtp'])->name('register.otp.request');
+    Route::get('register/verify-otp', [RegistrationOtpController::class, 'showOtpForm'])->name('register.otp.show');
+    Route::post('register/verify-otp', [RegistrationOtpController::class, 'verifyOtp'])->name('register.otp.verify');
+    Route::post('register/resend-otp', [RegistrationOtpController::class, 'resendOtp'])->name('register.otp.resend');
+});
 
 Route::get('dashboard', function () {
     $user = auth()->user();

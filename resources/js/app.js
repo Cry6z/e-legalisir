@@ -1,15 +1,32 @@
 const ThemeManager = (() => {
     const storageKey = 'e-legalisir-theme';
     let currentTheme = 'light';
+    let transitionTimer;
 
     const prefersDark = () =>
         window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     const getStoredTheme = () => window.localStorage.getItem(storageKey);
 
+    const startTransition = () => {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
+
+        const root = document.documentElement;
+        root.classList.add('theme-transition');
+
+        clearTimeout(transitionTimer);
+        transitionTimer = window.setTimeout(() => {
+            root.classList.remove('theme-transition');
+        }, 400);
+    };
+
     const applyTheme = (theme) => {
         currentTheme = theme === 'dark' ? 'dark' : 'light';
         const root = document.documentElement;
+
+        startTransition();
 
         if (currentTheme === 'dark') {
             root.classList.add('dark');

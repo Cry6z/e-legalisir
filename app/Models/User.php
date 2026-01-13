@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'profile_photo_path',
     ];
 
     /**
@@ -60,6 +61,19 @@ class User extends Authenticatable
     public function notifikasis()
     {
         return $this->hasMany(Notifikasi::class, 'user_id');
+    }
+
+    public function profilePhotoUrl(): ?string
+    {
+        if (! $this->profile_photo_path) {
+            return null;
+        }
+
+        if (Str::startsWith($this->profile_photo_path, ['http://', 'https://'])) {
+            return $this->profile_photo_path;
+        }
+
+        return asset('storage/' . $this->profile_photo_path);
     }
 
     public function hasRole(string $role): bool

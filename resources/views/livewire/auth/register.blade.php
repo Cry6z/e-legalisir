@@ -1,68 +1,84 @@
 <x-layouts.auth>
-    <div class="flex flex-col gap-6">
-        <x-auth-header :title="__('Create an account')" :description="__('Enter your details below to create your account')" />
+    <div class="flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl dark:border-white/5 dark:bg-white/5">
+        <div class="space-y-3 text-center">
+            <span class="inline-flex items-center justify-center rounded-full border border-emerald-200/60 bg-emerald-50/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-emerald-600 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-300">
+                {{ __('E-Legalisir') }}
+            </span>
+            <x-auth-header
+                :title="__('Buat Akun Alumni')"
+                :description="__('Isi data Anda untuk menerima kode OTP verifikasi melalui email.')"
+            />
+        </div>
 
-        <!-- Session Status -->
         <x-auth-session-status class="text-center" :status="session('status')" />
 
-        <form method="POST" action="{{ route('register.store') }}" class="flex flex-col gap-6">
+        <p class="rounded-2xl border border-dashed border-emerald-200/70 bg-emerald-50/70 px-4 py-3 text-sm text-emerald-800 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-100">
+            {{ __('Kode OTP berlaku 10 menit. Pastikan email aktif dan jangan bagikan kode kepada siapa pun.') }}
+        </p>
+
+        <form method="POST" action="{{ route('register.otp.request') }}" class="flex flex-col gap-5">
             @csrf
 
-            <!-- Name -->
             <flux:input
                 name="name"
-                :label="__('Name')"
+                :label="__('Nama Lengkap')"
                 :value="old('name')"
                 type="text"
                 required
                 autofocus
                 autocomplete="name"
-                :placeholder="__('Full name')"
+                placeholder="{{ __('Masukkan nama lengkap Anda') }}"
             />
 
-            <!-- Email Address -->
             <flux:input
                 name="email"
-                :label="__('Email address')"
+                :label="__('Email Aktif')"
                 :value="old('email')"
                 type="email"
                 required
                 autocomplete="email"
-                placeholder="email@example.com"
+                placeholder="email@contoh.com"
             />
 
-            <!-- Password -->
             <flux:input
                 name="password"
-                :label="__('Password')"
+                :label="__('Kata Sandi')"
                 type="password"
                 required
                 autocomplete="new-password"
-                :placeholder="__('Password')"
+                placeholder="{{ __('Minimal 8 karakter') }}"
                 viewable
             />
 
-            <!-- Confirm Password -->
             <flux:input
                 name="password_confirmation"
-                :label="__('Confirm password')"
+                :label="__('Konfirmasi Kata Sandi')"
                 type="password"
                 required
                 autocomplete="new-password"
-                :placeholder="__('Confirm password')"
+                placeholder="{{ __('Ulangi kata sandi') }}"
                 viewable
             />
 
-            <div class="flex items-center justify-end">
-                <flux:button type="submit" variant="primary" class="w-full">
-                    {{ __('Create account') }}
-                </flux:button>
-            </div>
+            <flux:button type="submit" variant="primary" class="w-full py-3 text-base font-semibold">
+                {{ __('Kirim OTP & Daftar') }}
+            </flux:button>
         </form>
 
-        <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
-            <span>{{ __('Already have an account?') }}</span>
-            <flux:link :href="route('login')" wire:navigate>{{ __('Log in') }}</flux:link>
+        <div class="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-xs text-zinc-200 dark:border-white/5 dark:bg-white/5 dark:text-zinc-300">
+            <p class="font-semibold text-white">{{ __('Tips cepat:') }}</p>
+            <ul class="mt-2 space-y-1">
+                <li>• {{ __('Gunakan email pribadi yang mudah diakses.') }}</li>
+                <li>• {{ __('Cek folder spam jika OTP belum masuk.') }}</li>
+                <li>• {{ __('Catat kata sandi Anda di tempat aman.') }}</li>
+            </ul>
+        </div>
+
+        <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-100 dark:text-zinc-300">
+            <span>{{ __('Sudah punya akun?') }}</span>
+            <flux:link :href="route('login')" wire:navigate class="font-semibold text-emerald-400 hover:text-emerald-300">
+                {{ __('Masuk di sini') }}
+            </flux:link>
         </div>
     </div>
 </x-layouts.auth>
