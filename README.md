@@ -249,7 +249,3 @@ Seeder default menambahkan lima status dasar serta empat akun uji (alumni, staf,
 ## Lisensi
 
 Proyek ini menggunakan lisensi **MIT** sebagaimana tercantum pada `composer.json`. Anda bebas menggunakan, memodifikasi, dan mendistribusikan dengan tetap menyertakan atribusi.
-
----
-
-Selamat membangun layanan legalisir digital kampus! Jika menghadapi kendala, mulai dengan memeriksa log (`storage/logs`), antrean, serta konfigurasi `.env`.
