@@ -1,5 +1,9 @@
 # E-Legalisir Universitas Muhammadiyah Bengkulu
 
+![Laravel 12](https://img.shields.io/badge/Laravel-12.x-ff2d20?logo=laravel&logoColor=white)
+![PHP 8.3](https://img.shields.io/badge/PHP-8.3-777bb4?logo=php&logoColor=white)
+![Livewire](https://img.shields.io/badge/Livewire-Volt%20%2B%20Flux-9333ea?logo=livewire&logoColor=white)
+
 Platform internal untuk mengelola pengajuan legalisir ijazah & transkrip alumni Universitas Muhammadiyah Bengkulu. Sistem ini dibangun di atas Laravel 12, Livewire Flux, dan Fortify untuk menghadirkan alur self-service bagi alumni serta workflow verifikasi multi-level untuk staf fakultas, dekan, dan superadmin.
 
 ---
