@@ -37,7 +37,7 @@ Platform internal untuk mengelola pengajuan legalisir ijazah & transkrip alumni 
   - Staf fakultas (validator)
   - Dekan (approver)
   - Superadmin BAAK (monitoring & manajemen peran)
-- **Paradigma**: Single-page dashboard berbasis Livewire dengan state reaktif dan dukungan antrean (queue) untuk proses async seperti email OTP.
+- **Paradigma**: Single-page dashboard berbasis Livewire dengan state reaktif dan dukungan antrean (queue) untuk proses async seperti email OTP (kode verifikasi).
 
 ### Sasaran Bisnis
 
